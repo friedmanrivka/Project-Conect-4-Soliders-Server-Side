@@ -1,0 +1,7 @@
+Scaffold-DbContext 'Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\USER\Desktop\Connect4Soliders\
+Connect4Soliders\Connect4Soliders\DAL\DB\EquipmentForSoldiers.mdf;Integrated Security=True;Connect Timeout=30'
+Microsoft.EntityFrameworkCore.SqlServer –Context LibraryContext -OutputDir Models
+-Force
+
+
+Scaffold-DbContext 'Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\USER\Desktop\Connect4Soliders\Connect4Soliders\Connect4Soliders\DAL\DB\EquipmentForSoldiers.mdf;Integrated Security=True;Connect Timeout=30' Microsoft.EntityFrameworkCore.SqlServer –Context EquipmentForSoldiersContext -OutputDir Do -NoOnConfiguring -Force
