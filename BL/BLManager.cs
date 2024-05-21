@@ -15,17 +15,17 @@ using System.Threading.Tasks;
 
 namespace BL;
 
-internal class BLManager
+public class BLManager
 {
     public IVolunteerRepoBl volunteer { get; set; }
 
     public BLManager(string constStr)
     {
         ServiceCollection services = new ServiceCollection();
-      services.AddAutoMapper(typeof(AutoMapper.AutoMapperProfile));
-        services.AddSingleton<DALManager>(x=>new DALManager(constStr));
+        services.AddAutoMapper(typeof(AutoMapper.AutoMapperProfile));
+        services.AddSingleton<DALManager>(x => new DALManager(constStr));
         services.AddScoped<BL.BlApi.IVolunteerRepoBl, BL.BlImplementaion.VolunteerServiceBl>();
-       
+
 
         ServiceProvider servicesProvider = services.BuildServiceProvider();
 

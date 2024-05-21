@@ -2,16 +2,17 @@
 using BL.BlApi;
 using BL.Bo;
 using DAL.DalApi;
-
+using BL;
 namespace Server.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 public class VolunteersController:ControllerBase
 {
     IVolunteerRepoBl volunteerRepoBl;
-    public VolunteersController(IVolunteerRepoBl volunteerRepoBl)
+    
+    public VolunteersController(BLManager bLManager)
     {
-        this.volunteerRepoBl = volunteerRepoBl;
+        this.volunteerRepoBl = bLManager.volunteer;
     }
     [HttpGet]
     public ActionResult<List<Volunteer>> Get()
