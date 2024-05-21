@@ -1,6 +1,7 @@
 ﻿using DAL.DalApi;
 using DAL.Dalimplementaion;
 using DAL.Do;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -12,16 +13,16 @@ namespace DAL;
 
 public class DALManager
 {
-    public IVolunteerRepo volunteer { get; }
+    public IVolunteerRepo volunteer { get; set; }
 
-    public DALManager()
+    public DALManager(string connStr)
     {
         ServiceCollection collections = new ServiceCollection();
-        collections.AddDbContext<EquipmentForSoldiersContext>();
+        collections.AddSingleton<EquipmentForSoldiersContext>();
         collections.AddScoped<IVolunteerRepo, DAL.VolunteerRepo.VolunteerRepo>();
-
+        collections.AddDbContext<EquipmentForSoldiersContext>(opt=>opt.UseSqlServer(connStr));
         ServiceProvider provider = collections.BuildServiceProvider();
 
-        volunteer = provider.GetRequiredService<DAL.VolunteerRepo.VolunteerRepo>();
+        volunteer = provider.GetRequiredService<IVolunteerRepo>();
     }
 }

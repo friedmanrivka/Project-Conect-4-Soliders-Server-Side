@@ -1,4 +1,5 @@
-﻿using BL.BlApi;
+﻿using AutoMapper;
+using BL.BlApi;
 using BL.BlImplementaion;
 using DAL;
 using DAL.DalApi;
@@ -21,13 +22,15 @@ internal class BLManager
     public BLManager(string constStr)
     {
         ServiceCollection services = new ServiceCollection();
-        services.AddScoped<DALManager>();
+        services.AddAutoMapper(typeof(AutoMapper.AutoMapperProfile));
+        services.AddSingleton<DALManager>(x=>new DALManager(constStr));
         services.AddScoped<BL.BlApi.IVolunteerRepoBl, BL.BlImplementaion.VolunteerServiceBl>();
+       
 
-        //services.AddAutoMapper(typeof(AutoMapper.AutoMapperProfile));
         ServiceProvider servicesProvider = services.BuildServiceProvider();
 
-        volunteer = servicesProvider.GetRequiredService<VolunteerServiceBl>();
+        //volunteer = servicesProvider.GetRequiredService<VolunteerServiceBl>();
+        volunteer = servicesProvider.GetRequiredService<IVolunteerRepoBl>();
     }
     //  public IVolunteerRepo volunteer { get; }
 

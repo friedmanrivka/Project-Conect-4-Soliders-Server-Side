@@ -13,6 +13,7 @@ public partial class Volunteer
     public string LastName { get; set; } = null!;
 
     public string FirstName { get; set; } = null!;
+    public string FullName { get; set; }
 
     public string PhoneNumber { get; set; }
 
@@ -24,10 +25,10 @@ public partial class Volunteer
 
     public string Email { get; set; }
 
-    public int Age { set => Age = DateTime.Now.Year - BirthDate.Year; }
+    //public int Age { set => Age = DateTime.Now.Year - BirthDate.Year; }
 
 
-
+    public int Age { get; set; }
 
 }
 

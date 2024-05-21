@@ -8,14 +8,24 @@ using System.Threading.Tasks;
 
 namespace BL.AutoMapper
 {
-    public class AutoMapperProfileclass:Profile
+    public class AutoMapperProfile:Profile
     {
-        public AutoMapperProfileclass()
+        public AutoMapperProfile()
         {
-         CreateMap<Volunteer, DAL.Do.Volunteer>().ReverseMap();
-
-        
+            CreateMap<DAL.Do.Volunteer, Volunteer>()
+           .ForMember(dest => dest.FullName, source => source.MapFrom(src => src.FirstName + " " + src.LastName));
+           
+           //.ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => GetFirstName(src)))
+           //.ForMember(dest=>dest.LastName,opt=>opt.MapFrom(src=))
         }
 
+
+        //CreateMap<Dal.Do.Singer, Singer>()
+        //        .ForMember(dest => dest.FullName, source => source.MapFrom(src => src.FirstName + " " + src.LastName))
+        //        .ForMember(dest => dest.Age, source => source.MapFrom(src => src.Age* 10));
+        //private string GetFullName(Volunteer volunteer)
+        //{
+        //    return "unknown";
+        //}
     }
 }

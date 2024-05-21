@@ -8,10 +8,5 @@ namespace BL.BlApi;
 
 public interface IVolunteerRepoBl : IRepoBl<Volunteer>
 {
-    //public List<Volunteer> GetSomeDetailOfVolunteer();
-    //public Volunteer GetSomeDetailOfSpecificVolunteer(int id);
-    //public Volunteer UpdateVolunteer(Volunteer volunteer, int id);
-    //public Volunteer CreateNewVolunteer(Volunteer volunteer);
-    //public bool DeleteVolunteer(int id);
-   
+  
 }
