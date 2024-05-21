@@ -80,3 +80,4 @@ C:\Users\USER\Desktop\Connect4Soliders\Connect4Soliders\Connect4Soliders\Server\
 C:\Users\USER\Desktop\Connect4Soliders\Connect4Soliders\Connect4Soliders\Server\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
 C:\Users\USER\Desktop\Connect4Soliders\Connect4Soliders\Connect4Soliders\Server\bin\Debug\net7.0\Mono.TextTemplating.dll
 C:\Users\USER\Desktop\Connect4Soliders\Connect4Soliders\Connect4Soliders\Server\bin\Debug\net7.0\System.CodeDom.dll
+C:\Users\USER\Desktop\Connect4Soliders\Connect4Soliders\Connect4Soliders\Server\obj\Debug\net7.0\Server.sourcelink.json

@@ -13,3 +13,4 @@ C:\Users\USER\Desktop\Connect4Soliders\Connect4Soliders\Connect4Soliders\BL\obj\
 C:\Users\USER\Desktop\Connect4Soliders\Connect4Soliders\Connect4Soliders\BL\bin\Debug\net7.0\DAL.dll
 C:\Users\USER\Desktop\Connect4Soliders\Connect4Soliders\Connect4Soliders\BL\bin\Debug\net7.0\DAL.pdb
 C:\Users\USER\Desktop\Connect4Soliders\Connect4Soliders\Connect4Soliders\BL\obj\Debug\net7.0\BL.csproj.CopyComplete
+C:\Users\USER\Desktop\Connect4Soliders\Connect4Soliders\Connect4Soliders\BL\obj\Debug\net7.0\BL.sourcelink.json

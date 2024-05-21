@@ -30,27 +30,26 @@ public class VolunteersController:ControllerBase
         }
         return volunteerRepoBl.Get(volunteerId);
     }
-    [HttpPut("{volunteerId}")]
-    public ActionResult<Volunteer> Update(Volunteer volunteer, int Id)
-    {
-        if(volunteer == null)
-        {
-            return BadRequest();
-        }
-        return volunteerRepoBl.Update(volunteer , Id);
-    }
+    //[HttpPut("{volunteerId}")]
+    //public ActionResult<Volunteer> Update(Volunteer volunteer, int Id)
+    //{
+    //    if(volunteer == null)
+    //    {
+    //        return BadRequest();
+    //    }
+    //    return volunteerRepoBl.Update(volunteer , Id);
+    //}
 
-    [HttpDelete("{volunteerId}")]
-    public ActionResult<bool> Delete(int volunteerId)
-    {
-        if (volunteerId == null)
-        {
-            return BadRequest();
-        }
-        return volunteerRepoBl.Delete(volunteerId);
-    }
+    //[HttpDelete("{volunteerId}")]
+    //public ActionResult<bool> Delete(int volunteerId)
+    //{
+    //    if (volunteerId == null)
+    //    {
+    //        return BadRequest();
+    //    }
+    //    return volunteerRepoBl.Delete(volunteerId);
+    //}
     [HttpPost]
-
     public ActionResult<Volunteer> Post(Volunteer volunteer)
     {
         if(volunteer == null)

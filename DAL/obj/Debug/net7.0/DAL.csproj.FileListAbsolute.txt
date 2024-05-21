@@ -12,3 +12,4 @@ C:\Users\USER\Desktop\Connect4Soliders\Connect4Soliders\Connect4Soliders\DAL\obj
 C:\Users\USER\Desktop\Connect4Soliders\Connect4Soliders\Connect4Soliders\DAL\obj\Debug\net7.0\ref\DAL.dll
 C:\Users\USER\Desktop\Connect4Soliders\Connect4Soliders\Connect4Soliders\DAL\bin\Debug\net7.0\DAL.runtimeconfig.json
 C:\Users\USER\Desktop\Connect4Soliders\Connect4Soliders\Connect4Soliders\DAL\obj\Debug\net7.0\DAL.genruntimeconfig.cache
+C:\Users\USER\Desktop\Connect4Soliders\Connect4Soliders\Connect4Soliders\DAL\obj\Debug\net7.0\DAL.sourcelink.json

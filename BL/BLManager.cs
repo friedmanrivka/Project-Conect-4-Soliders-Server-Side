@@ -22,7 +22,7 @@ internal class BLManager
     public BLManager(string constStr)
     {
         ServiceCollection services = new ServiceCollection();
-        services.AddAutoMapper(typeof(AutoMapper.AutoMapperProfile));
+      services.AddAutoMapper(typeof(AutoMapper.AutoMapperProfile));
         services.AddSingleton<DALManager>(x=>new DALManager(constStr));
         services.AddScoped<BL.BlApi.IVolunteerRepoBl, BL.BlImplementaion.VolunteerServiceBl>();
        
