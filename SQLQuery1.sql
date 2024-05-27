@@ -1,0 +1,14 @@
+﻿SELECT COUNT(*) AS NumberOfVolunteers
+FROM Volunteers;
+
+UPDATE Volunteers
+SET DateOfBirth = DATEADD(day, ABS(CHECKSUM(NEWID())) % 365, DATEFROMPARTS(1930 + ABS(CHECKSUM(NEWID())) % 77, ABS(CHECKSUM(NEWID())) % 12 + 1, ABS(CHECKSUM(NEWID())) % 28 + 1));
+
+ALTER TABLE Volunteers
+ALTER COLUMN DateOfBirth DATETIME NOT NULL;
+
+UPDATE Volunteers
+SET email = CONCAT(SUBSTRING(CONVERT(varchar(255), NEWID()), 0, 9), '@gmail.com');
+
+ALTER TABLE Volunteers
+ALTER COLUMN email VARCHAR(225) NOT NULL;

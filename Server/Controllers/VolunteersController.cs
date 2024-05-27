@@ -31,7 +31,34 @@ public class VolunteersController:ControllerBase
         }
         return volunteerRepoBl.Get(volunteerId);
     }
-    //[HttpPut("{volunteerId}")]
+   
+    [HttpPost]
+    public ActionResult<Volunteer> Post(Volunteer volunteer)
+    {
+        if(volunteer == null)
+        {
+            return BadRequest();
+        }
+        if (DoesVolunteerExist(volunteer.VolunteerId))
+        {
+            return Conflict("Volunteer with this ID already exists.");
+        }
+        try
+        {
+            return volunteerRepoBl.Add(volunteer);
+        }
+        catch (Exception ex)
+        {
+            return Conflict(ex.Message);
+        }
+       
+    }
+    private bool DoesVolunteerExist(int volunteerId)
+    {
+        return volunteerRepoBl.GetAll().Any(v => v.VolunteerId== volunteerId);
+    }
+}
+ //[HttpPut("{volunteerId}")]
     //public ActionResult<Volunteer> Update(Volunteer volunteer, int Id)
     //{
     //    if(volunteer == null)
@@ -50,13 +77,3 @@ public class VolunteersController:ControllerBase
     //    }
     //    return volunteerRepoBl.Delete(volunteerId);
     //}
-    [HttpPost]
-    public ActionResult<Volunteer> Post(Volunteer volunteer)
-    {
-        if(volunteer == null)
-        {
-            return BadRequest();
-        }
-        return volunteerRepoBl.Add(volunteer);
-    }
-}

@@ -110,9 +110,9 @@ public partial class EquipmentForSoldiersContext : DbContext
             entity.Property(e => e.VolunteerId)
                 .ValueGeneratedNever()
                 .HasColumnName("VolunteerID");
-            entity.Property(e => e.DateOfBirth).HasColumnType("date");
+            entity.Property(e => e.DateOfBirth).HasColumnType("datetime");
             entity.Property(e => e.Email)
-                .HasMaxLength(255)
+                .HasMaxLength(225)
                 .IsUnicode(false);
             entity.Property(e => e.FirstName)
                 .HasMaxLength(255)
