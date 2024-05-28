@@ -1,12 +1,12 @@
-﻿using System;
+﻿using DAL.Do;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BL.BlImplementaion
+namespace DAL.DalApi;
+
+public interface ICityRepo:IRepo<City>
 {
-    internal class CityServiceBlcs
-    {
-    }
 }

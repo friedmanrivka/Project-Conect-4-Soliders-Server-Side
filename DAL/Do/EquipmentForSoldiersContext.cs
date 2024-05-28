@@ -10,7 +10,6 @@ public partial class EquipmentForSoldiersContext : DbContext
         : base(options)
     {
     }
-
     public virtual DbSet<Address> Addresses { get; set; }
 
     public virtual DbSet<City> Cities { get; set; }
