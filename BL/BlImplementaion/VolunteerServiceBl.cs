@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DAL;
 using DAL.DalApi;
+using System.Reflection;
 //using DAL.Do;
 //using Volunteer = BL.Bo.Volunteer;
 
@@ -38,19 +39,35 @@ public Volunteer Get(int id)
     }
 
     //how he know automatic that he will recive something from type volunteer
+    //public Volunteer Add(Volunteer volunteer)
+    //{
+    //    if (DoesVolunteerExist(volunteer))
+    //    {
+    //        throw new Exception("Volunteer already exists.");
+    //    }
+    //    DAL.Do.Volunteer volunteer1 = map.Map<DAL.Do.Volunteer>(volunteer);
+    //    volunteerRepo.Add(volunteer1);
+    //    Bo.Volunteer volunteer2 = map.Map<Bo.Volunteer>(volunteer1);
+    //    return volunteer2;
+    //}
+
     public Volunteer Add(Volunteer volunteer)
     {
-        if (DoesVolunteerExist(volunteer))
-        {
-            throw new Exception("Volunteer already exists.");
-        }
         DAL.Do.Volunteer volunteer1 = map.Map<DAL.Do.Volunteer>(volunteer);
         volunteerRepo.Add(volunteer1);
         Bo.Volunteer volunteer2 = map.Map<Bo.Volunteer>(volunteer1);
         return volunteer2;
-
     }
- public Volunteer Update(Volunteer volunteer, int volunteerId)
+
+
+    //public Singer Add(Singer singer)
+    //{
+    //    Dal.Do.Singer singer1 = map.Map<Dal.Do.Singer>(singer);
+    //    singerRepo.Add(singer1);
+    //    Bo.Singer singer2 = map.Map<Bo.Singer>(singer1);
+    //    return singer2;
+    //}
+    public Volunteer Update(Volunteer volunteer, int volunteerId)
     {
         DAL.Do.Volunteer dalVolunteer = map.Map<DAL.Do.Volunteer>(volunteer);
         volunteerRepo.Update(dalVolunteer, volunteerId);
@@ -63,22 +80,22 @@ public Volunteer Get(int id)
         Volunteer volunteer = map.Map<Volunteer>(dalVolunteer);
         return volunteer;
     }
-    private bool DoesVolunteerExist(Volunteer volunteer)
-    {
-        return volunteerRepo.GetAll().Any(v => v.FirstName == volunteer.FullName.Split(' ')[0] && v.LastName == volunteer.FullName.Split(' ')[1]);
-    }
-      private int CalculateAge(DateTime dateOfBirth)
-    {
-        // Calculate age based on date of birth
-        // You can implement your own logic here
-        // For example, subtracting the birth year from the current year
-        var today = DateTime.Today;
-        var age = today.Year - dateOfBirth.Year;
-        if (dateOfBirth.Date > today.AddYears(-age))
-            age--;
+    //private bool DoesVolunteerExist(Volunteer volunteer)
+    //{
+    //    return volunteerRepo.GetAll().Any(v => v.FirstName == volunteer.FullName.Split(' ')[0] && v.LastName == volunteer.FullName.Split(' ')[1]);
+    //}
+    //  private int CalculateAge(DateTime dateOfBirth)
+    //{
+    //    // Calculate age based on date of birth
+    //    // You can implement your own logic here
+    //    // For example, subtracting the birth year from the current year
+    //    var today = DateTime.Today;
+    //    var age = today.Year - dateOfBirth.Year;
+    //    if (dateOfBirth.Date > today.AddYears(-age))
+    //        age--;
 
-        return age;
-    }
+    //    return age;
+    //}
 }
 
 

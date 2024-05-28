@@ -18,19 +18,20 @@ namespace BL;
 public class BLManager
 {
     public IVolunteerRepoBl volunteer { get; set; }
-
+    public IAddressRepoBl address { get; set; }
     public BLManager(string constStr)
     {
         ServiceCollection services = new ServiceCollection();
         services.AddAutoMapper(typeof(AutoMapper.AutoMapperProfile));
         services.AddSingleton<DALManager>(x => new DALManager(constStr));
         services.AddScoped<BL.BlApi.IVolunteerRepoBl, BL.BlImplementaion.VolunteerServiceBl>();
-
+        services.AddScoped<BL.BlApi.IAddressRepoBl, BL.BlImplementaion.AdressServiceBl>();
 
         ServiceProvider servicesProvider = services.BuildServiceProvider();
 
         //volunteer = servicesProvider.GetRequiredService<VolunteerServiceBl>();
         volunteer = servicesProvider.GetRequiredService<IVolunteerRepoBl>();
+        address = servicesProvider.GetRequiredService<IAddressRepoBl>();
     }
     //  public IVolunteerRepo volunteer { get; }
 
