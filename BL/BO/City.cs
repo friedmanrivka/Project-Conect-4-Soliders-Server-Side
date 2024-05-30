@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BL.Bo
 {
-    internal class City
+    public partial class City
     {
     }
 }
