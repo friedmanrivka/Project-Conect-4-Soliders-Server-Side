@@ -15,7 +15,7 @@ namespace BL.Bo
 
         public int AddressId { get; set; }
 
-        public virtual Address Address { get; set; } = null!;
+      
 
         public virtual ICollection<IdfbaseKindOfVolunteering> IdfbaseKindOfVolunteerings { get; set; } = new List<IdfbaseKindOfVolunteering>();
     }

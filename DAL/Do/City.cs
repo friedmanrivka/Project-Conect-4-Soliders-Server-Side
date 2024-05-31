@@ -9,5 +9,7 @@ public partial class City
 
     public string Name { get; set; } = null!;
 
-    public virtual ICollection<Street> Streets { get; set; } = new List<Street>();
+    public virtual ICollection<Idfbasis> Idfbases { get; set; } = new List<Idfbasis>();
+
+    public virtual ICollection<Volunteer> Volunteers { get; set; } = new List<Volunteer>();
 }

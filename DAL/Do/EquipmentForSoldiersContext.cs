@@ -10,7 +10,6 @@ public partial class EquipmentForSoldiersContext : DbContext
         : base(options)
     {
     }
-    public virtual DbSet<Address> Addresses { get; set; }
 
     public virtual DbSet<City> Cities { get; set; }
 
@@ -20,26 +19,12 @@ public partial class EquipmentForSoldiersContext : DbContext
 
     public virtual DbSet<KindOfVolunteering> KindOfVolunteerings { get; set; }
 
-    public virtual DbSet<Street> Streets { get; set; }
-
     public virtual DbSet<Volunteer> Volunteers { get; set; }
 
     public virtual DbSet<VolunteersKindOfVolunteering> VolunteersKindOfVolunteerings { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Address>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PK__Address__3214EC07985E5D9D");
-
-            entity.ToTable("Address");
-
-            entity.HasOne(d => d.Street).WithMany(p => p.Addresses)
-                .HasForeignKey(d => d.StreetId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Address__Apartme__6383C8BA");
-        });
-
         modelBuilder.Entity<City>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__City__3214EC07D68A25C8");
@@ -73,10 +58,9 @@ public partial class EquipmentForSoldiersContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
 
-            entity.HasOne(d => d.Address).WithMany(p => p.Idfbases)
-                .HasForeignKey(d => d.AddressId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_IDFBasesAddress");
+            entity.HasOne(d => d.City).WithMany(p => p.Idfbases)
+                .HasForeignKey(d => d.CityId)
+                .HasConstraintName("FK_IDFBases_CityId");
         });
 
         modelBuilder.Entity<KindOfVolunteering>(entity =>
@@ -86,20 +70,6 @@ public partial class EquipmentForSoldiersContext : DbContext
             entity.ToTable("KindOfVolunteering");
 
             entity.Property(e => e.Description).HasMaxLength(255);
-        });
-
-        modelBuilder.Entity<Street>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PK__Street__3214EC075B2DC531");
-
-            entity.ToTable("Street");
-
-            entity.Property(e => e.Name).HasMaxLength(50);
-
-            entity.HasOne(d => d.City).WithMany(p => p.Streets)
-                .HasForeignKey(d => d.CityId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_StreetCity");
         });
 
         modelBuilder.Entity<Volunteer>(entity =>
@@ -125,6 +95,10 @@ public partial class EquipmentForSoldiersContext : DbContext
             entity.Property(e => e.PhoneNumber)
                 .HasMaxLength(10)
                 .IsUnicode(false);
+
+            entity.HasOne(d => d.City).WithMany(p => p.Volunteers)
+                .HasForeignKey(d => d.CityId)
+                .HasConstraintName("FK_CityId");
         });
 
         modelBuilder.Entity<VolunteersKindOfVolunteering>(entity =>

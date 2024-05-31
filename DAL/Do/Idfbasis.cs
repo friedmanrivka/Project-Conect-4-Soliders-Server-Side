@@ -9,9 +9,9 @@ public partial class Idfbasis
 
     public string Name { get; set; } = null!;
 
-    public int AddressId { get; set; }
+    public int? CityId { get; set; }
 
-    public virtual Address Address { get; set; } = null!;
+    public virtual City? City { get; set; }
 
     public virtual ICollection<IdfbaseKindOfVolunteering> IdfbaseKindOfVolunteerings { get; set; } = new List<IdfbaseKindOfVolunteering>();
 }
