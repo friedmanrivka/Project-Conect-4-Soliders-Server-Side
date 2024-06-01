@@ -28,7 +28,8 @@ internal class CityRepo:ICityRepo
 
     public List<City> GetAll()
     {
-        throw new NotImplementedException();
+        IEnumerable<City> City = Equipment4SoldiersContext.Cities;
+        return City.ToList();
     }
 
     public City Update(City something, int somethimg)

@@ -17,11 +17,12 @@ namespace BL.BlImplementaion;
 public class VolunteerServiceBl : IVolunteerRepoBl
 {
     IVolunteerRepo volunteerRepo;
-
+    ICityRepo cityRepo;
     IMapper map;
-    public VolunteerServiceBl(DALManager volunteerRepo, IMapper map)
+    public VolunteerServiceBl(DALManager volunteerRepo,ICityRepo cityRepo, IMapper map)
     {
         this.volunteerRepo = volunteerRepo.volunteer;
+        this.cityRepo = cityRepo;
         this.map = map;
     }
  public List<Volunteer> GetAll()

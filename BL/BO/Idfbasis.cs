@@ -5,18 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BL.Bo
+namespace BL.Bo;
+
+internal class Idfbasis
 {
-    internal class Idfbasis
-    {
-        public int Id { get; set; }
+    public int Id { get; set; }
 
-        public string Name { get; set; } = null!;
+    public string Name { get; set; } = null!;
 
-        public int AddressId { get; set; }
+    public int AddressId { get; set; }
 
-      
+  
 
-        public virtual ICollection<IdfbaseKindOfVolunteering> IdfbaseKindOfVolunteerings { get; set; } = new List<IdfbaseKindOfVolunteering>();
-    }
+    public virtual ICollection<IdfbaseKindOfVolunteering> IdfbaseKindOfVolunteerings { get; set; } = new List<IdfbaseKindOfVolunteering>();
 }

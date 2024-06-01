@@ -13,10 +13,20 @@ namespace BL.AutoMapper
         {
             CreateMap<DAL.Do.Volunteer, Volunteer>()
            .ForMember(dest => dest.FullName, source => source.MapFrom(src => src.FirstName + " " + src.LastName))
+           .ForMember(dest => dest.CityName, opt => opt.MapFrom(src => src.City != null ? src.City.Name : null))
            .ForMember(dest => dest.Age, opt => opt.MapFrom(src => CalculateAge(src.DateOfBirth)));
-            ;
 
-             }
+
+            CreateMap<DAL.Do.City,City > ();
+            //CreateMap<Volunteer, DAL.Do.Volunteer>()
+            //    .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FullName.Split(' ')[0]))
+            //.ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.FullName.Contains(' ') ? src.FullName.Substring(src.FullName.IndexOf(' ') + 1) : string.Empty));
+
+            //CreateMap<DAL.Do.Volunteer, Volunteer>()
+            //    .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FullName.Split(' ')[0]))
+            //    .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.FullName.Contains(' ') ? src.FullName.Substring(src.FullName.IndexOf(' ') + 1) : string.Empty));
+
+        }
         private int CalculateAge(DateTime? dateOfBirth)
         {
             if (!dateOfBirth.HasValue)

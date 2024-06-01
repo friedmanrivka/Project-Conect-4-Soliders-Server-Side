@@ -1,5 +1,8 @@
-﻿using BL.BlApi;
+﻿using AutoMapper;
+using BL.BlApi;
 using BL.Bo;
+using DAL.DalApi;
+using DAL.VolunteerRepo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +13,13 @@ namespace BL.BlImplementaion;
 
 internal class CityServiceBl : ICityRepoBl
 {
+    ICityRepo cityRepo;
+    IMapper map;
+    public CityServiceBl(ICityRepo cityRepo, IMapper map)
+    {
+        this.cityRepo = cityRepo;
+        this.map = map;
+    }
     public City Add(City something)
     {
         throw new NotImplementedException();
@@ -27,9 +37,13 @@ internal class CityServiceBl : ICityRepoBl
 
     public List<City> GetAll()
     {
-        throw new NotImplementedException();
+        List<City> listCityBl = new();
+        var data = cityRepo.GetAll();
+        data.ForEach(city => listCityBl.Add(map.Map<City>(city)));
+        return listCityBl;
     }
 
+   
     public City Update(City something, int somethimgCode)
     {
         throw new NotImplementedException();
