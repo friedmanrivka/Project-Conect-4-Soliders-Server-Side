@@ -19,10 +19,10 @@ public class VolunteerServiceBl : IVolunteerRepoBl
     IVolunteerRepo volunteerRepo;
     ICityRepo cityRepo;
     IMapper map;
-    public VolunteerServiceBl(DALManager volunteerRepo,ICityRepo cityRepo, IMapper map)
+    public VolunteerServiceBl(DALManager volunteerRepo, IMapper map)
     {
         this.volunteerRepo = volunteerRepo.volunteer;
-        this.cityRepo = cityRepo;
+        this.cityRepo = volunteerRepo.city;
         this.map = map;
     }
  public List<Volunteer> GetAll()

@@ -3403,23 +3403,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\USER\\.nuget\\packages\\": {},
+    "C:\\Users\\פרידמן רבקה\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\USER\\Desktop\\Connect4Soliders\\Connect4Soliders\\Connect4Soliders\\Server\\Server.csproj",
+      "projectUniqueName": "C:\\Users\\פרידמן רבקה\\Desktop\\project\\Project-Conect-4-Soliders-Server-Side\\Server\\Server.csproj",
       "projectName": "Server",
-      "projectPath": "C:\\Users\\USER\\Desktop\\Connect4Soliders\\Connect4Soliders\\Connect4Soliders\\Server\\Server.csproj",
-      "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\USER\\Desktop\\Connect4Soliders\\Connect4Soliders\\Connect4Soliders\\Server\\obj\\",
+      "projectPath": "C:\\Users\\פרידמן רבקה\\Desktop\\project\\Project-Conect-4-Soliders-Server-Side\\Server\\Server.csproj",
+      "packagesPath": "C:\\Users\\פרידמן רבקה\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\פרידמן רבקה\\Desktop\\project\\Project-Conect-4-Soliders-Server-Side\\Server\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\פרידמן רבקה\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3434,8 +3434,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\USER\\Desktop\\Connect4Soliders\\Connect4Soliders\\Connect4Soliders\\BL\\BL.csproj": {
-              "projectPath": "C:\\Users\\USER\\Desktop\\Connect4Soliders\\Connect4Soliders\\Connect4Soliders\\BL\\BL.csproj"
+            "C:\\Users\\פרידמן רבקה\\Desktop\\project\\Project-Conect-4-Soliders-Server-Side\\BL\\BL.csproj": {
+              "projectPath": "C:\\Users\\פרידמן רבקה\\Desktop\\project\\Project-Conect-4-Soliders-Server-Side\\BL\\BL.csproj"
             }
           }
         }
@@ -3488,7 +3488,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

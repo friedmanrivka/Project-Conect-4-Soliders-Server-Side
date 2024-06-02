@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BL.BlApi;
 using BL.Bo;
+using DAL;
 using DAL.DalApi;
 using DAL.VolunteerRepo;
 using System;
@@ -15,9 +16,9 @@ internal class CityServiceBl : ICityRepoBl
 {
     ICityRepo cityRepo;
     IMapper map;
-    public CityServiceBl(ICityRepo cityRepo, IMapper map)
+    public CityServiceBl(DALManager cityRepo, IMapper map)
     {
-        this.cityRepo = cityRepo;
+        this.cityRepo = cityRepo.city;
         this.map = map;
     }
     public City Add(City something)

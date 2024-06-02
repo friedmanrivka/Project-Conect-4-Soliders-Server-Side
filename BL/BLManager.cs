@@ -14,7 +14,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BL;
-
 public class BLManager
 {
 
@@ -41,7 +40,6 @@ public class BLManager
     }
 }
 //    //  public IVolunteerRepo volunteer { get; }
-
 //    //    public DALManager()
 //    //    {
 //    //        ServiceCollection collections = new ServiceCollection();

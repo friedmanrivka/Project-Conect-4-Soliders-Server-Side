@@ -13,3 +13,17 @@ C:\Users\USER\Desktop\Connect4Soliders\Connect4Soliders\Connect4Soliders\DAL\obj
 C:\Users\USER\Desktop\Connect4Soliders\Connect4Soliders\Connect4Soliders\DAL\bin\Debug\net7.0\DAL.runtimeconfig.json
 C:\Users\USER\Desktop\Connect4Soliders\Connect4Soliders\Connect4Soliders\DAL\obj\Debug\net7.0\DAL.genruntimeconfig.cache
 C:\Users\USER\Desktop\Connect4Soliders\Connect4Soliders\Connect4Soliders\DAL\obj\Debug\net7.0\DAL.sourcelink.json
+C:\Users\פרידמן רבקה\Desktop\project\Project-Conect-4-Soliders-Server-Side\DAL\bin\Debug\net7.0\DAL.deps.json
+C:\Users\פרידמן רבקה\Desktop\project\Project-Conect-4-Soliders-Server-Side\DAL\bin\Debug\net7.0\DAL.runtimeconfig.json
+C:\Users\פרידמן רבקה\Desktop\project\Project-Conect-4-Soliders-Server-Side\DAL\bin\Debug\net7.0\DAL.dll
+C:\Users\פרידמן רבקה\Desktop\project\Project-Conect-4-Soliders-Server-Side\DAL\bin\Debug\net7.0\DAL.pdb
+C:\Users\פרידמן רבקה\Desktop\project\Project-Conect-4-Soliders-Server-Side\DAL\obj\Debug\net7.0\DAL.csproj.AssemblyReference.cache
+C:\Users\פרידמן רבקה\Desktop\project\Project-Conect-4-Soliders-Server-Side\DAL\obj\Debug\net7.0\DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\פרידמן רבקה\Desktop\project\Project-Conect-4-Soliders-Server-Side\DAL\obj\Debug\net7.0\DAL.AssemblyInfoInputs.cache
+C:\Users\פרידמן רבקה\Desktop\project\Project-Conect-4-Soliders-Server-Side\DAL\obj\Debug\net7.0\DAL.AssemblyInfo.cs
+C:\Users\פרידמן רבקה\Desktop\project\Project-Conect-4-Soliders-Server-Side\DAL\obj\Debug\net7.0\DAL.csproj.CoreCompileInputs.cache
+C:\Users\פרידמן רבקה\Desktop\project\Project-Conect-4-Soliders-Server-Side\DAL\obj\Debug\net7.0\DAL.dll
+C:\Users\פרידמן רבקה\Desktop\project\Project-Conect-4-Soliders-Server-Side\DAL\obj\Debug\net7.0\refint\DAL.dll
+C:\Users\פרידמן רבקה\Desktop\project\Project-Conect-4-Soliders-Server-Side\DAL\obj\Debug\net7.0\DAL.pdb
+C:\Users\פרידמן רבקה\Desktop\project\Project-Conect-4-Soliders-Server-Side\DAL\obj\Debug\net7.0\DAL.genruntimeconfig.cache
+C:\Users\פרידמן רבקה\Desktop\project\Project-Conect-4-Soliders-Server-Side\DAL\obj\Debug\net7.0\ref\DAL.dll
