@@ -12,10 +12,6 @@ internal interface IIDFbasisRepoBl: IRepoBl<Idfbasis>
 
 
 {
-    //public List<Idfbasis> GetSomeDetailOfIDFbasis();
-    //public Idfbasis GetSomeDetailOfSpecificIDFbasis(int id);
-    //public Idfbasis UpdateIDFbasis(Idfbasis idfbasis, int id);
-    //public Idfbasis CreateNewIDFbasis(Idfbasis idfbasis);
-    //public bool DeleteIDFbasis(int id);
+    
 
 }

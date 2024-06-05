@@ -19,7 +19,7 @@ public class BLManager
 
     public ICityRepoBl city { get; set; }
     public IVolunteerRepoBl volunteer { get; set; }
-
+    //public IIDFbasisRepoBl  IDFbase{ get; set; }
     public BLManager(string constStr)
     {
         ServiceCollection services = new ServiceCollection();
@@ -29,7 +29,7 @@ public class BLManager
 
         services.AddScoped<BL.BlApi.ICityRepoBl, BL.BlImplementaion.CityServiceBl>();
 
-
+        services.AddScoped<BL.BlApi.IIDFbasisRepoBl,BL.BlImplementaion.IDFbasisServiceBl>();
         ServiceProvider servicesProvider = services.BuildServiceProvider();
 
         //volunteer = servicesProvider.GetRequiredService<VolunteerServiceBl>();

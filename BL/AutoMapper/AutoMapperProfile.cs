@@ -11,11 +11,14 @@ namespace BL.AutoMapper
     {
         public AutoMapperProfile()
         {
-            CreateMap<DAL.Do.City,BL.Bo.City>();
-            CreateMap<DAL.Do.Volunteer, Volunteer>()
-           .ForMember(dest => dest.FullName, source => source.MapFrom(src => src.FirstName + " " + src.LastName))
-           .ForMember(dest => dest.CityName, opt => opt.MapFrom(src => src.City != null ? src.City.Name : null))
-           .ForMember(dest => dest.Age, opt => opt.MapFrom(src => CalculateAge(src.DateOfBirth)));
+          CreateMap<DAL.Do.City,BL.Bo.City>();
+          CreateMap<DAL.Do.Volunteer, Volunteer>()
+           .ForMember(dest => dest.FullName,
+               opt => opt.MapFrom(src => src.FirstName + " " + src.LastName))
+           .ForMember(dest => dest.CityName,
+               opt => opt.MapFrom(src => src.City != null ? src.City.Name : null))
+           .ForMember(dest => dest.Age,
+               opt => opt.MapFrom(src => CalculateAge(src.DateOfBirth)));
 
             CreateMap<BL.Bo.Volunteer, DAL.Do.Volunteer>()
                 .ForMember(dest => dest.FirstName,

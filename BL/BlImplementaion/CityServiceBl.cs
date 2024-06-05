@@ -49,4 +49,8 @@ internal class CityServiceBl : ICityRepoBl
     {
         throw new NotImplementedException();
     }
+    public int? GetCityIdByName(string cityName) 
+    {
+        return cityRepo.GetCityIdByName(cityName);
+    }
 }

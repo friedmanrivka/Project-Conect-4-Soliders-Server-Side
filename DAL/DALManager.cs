@@ -13,6 +13,7 @@ namespace DAL;
 
 public class DALManager
 {
+    public IIDFbasisRepo IDFbase { get; set; }
     public IVolunteerRepo volunteer { get; set; }
  
     public ICityRepo city { get; set; }
