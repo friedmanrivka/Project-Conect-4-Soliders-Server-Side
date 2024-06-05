@@ -8,4 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BL
-build_property.ProjectDir = C:\Users\פרידמן רבקה\Desktop\project\Project-Conect-4-Soliders-Server-Side\BL\
+build_property.ProjectDir = C:\Users\USER\Desktop\rivky2\Project-Conect-4-Soliders-Server-Side\BL\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
