@@ -11,20 +11,23 @@ namespace BL.AutoMapper
     {
         public AutoMapperProfile()
         {
+            CreateMap<DAL.Do.City,BL.Bo.City>();
             CreateMap<DAL.Do.Volunteer, Volunteer>()
            .ForMember(dest => dest.FullName, source => source.MapFrom(src => src.FirstName + " " + src.LastName))
            .ForMember(dest => dest.CityName, opt => opt.MapFrom(src => src.City != null ? src.City.Name : null))
            .ForMember(dest => dest.Age, opt => opt.MapFrom(src => CalculateAge(src.DateOfBirth)));
 
-
-            CreateMap<DAL.Do.City,City > ();
-            //CreateMap<Volunteer, DAL.Do.Volunteer>()
-            //    .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FullName.Split(' ')[0]))
-            //.ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.FullName.Contains(' ') ? src.FullName.Substring(src.FullName.IndexOf(' ') + 1) : string.Empty));
-
-            //CreateMap<DAL.Do.Volunteer, Volunteer>()
-            //    .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FullName.Split(' ')[0]))
-            //    .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.FullName.Contains(' ') ? src.FullName.Substring(src.FullName.IndexOf(' ') + 1) : string.Empty));
+            CreateMap<BL.Bo.Volunteer, DAL.Do.Volunteer>()
+                .ForMember(dest => dest.FirstName,
+                           opt => opt.MapFrom(src => GetFirstName(src.FullName)))
+                .ForMember(dest => dest.LastName,
+                           opt => opt.MapFrom(src => GetLastName(src.FullName)))
+                .ForMember(dest => dest.DateOfBirth,
+                           opt => opt.MapFrom(src => DateTime.Today.AddYears(-src.Age)))
+                .ForMember(dest => dest.City,
+                           opt => opt.Ignore()) // לא למפות את ה-City ישירות
+                .ForMember(dest => dest.CityId,
+                           opt => opt.MapFrom(src => src.CityId));
 
         }
         private int CalculateAge(DateTime? dateOfBirth)
@@ -38,6 +41,17 @@ namespace BL.AutoMapper
             if (dateOfBirth.Value.Date > today.AddYears(-age)) age--;
 
             return age;
+        }
+        private string GetFirstName(string fullName)
+        {
+            var names = fullName.Split(' ');
+            return names[0];
+        }
+
+        private string GetLastName(string fullName)
+        {
+            var names = fullName.Split(' ');
+            return names.Length > 1 ? names[1] : string.Empty;
         }
         //CreateMap<BL.Bo.Volunteer, Volunteer>()
 
@@ -101,3 +115,12 @@ namespace BL.AutoMapper
         //}
     }
 }
+
+
+//CreateMap<Volunteer, DAL.Do.Volunteer>()
+//    .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FullName.Split(' ')[0]))
+//.ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.FullName.Contains(' ') ? src.FullName.Substring(src.FullName.IndexOf(' ') + 1) : string.Empty));
+
+//CreateMap<DAL.Do.Volunteer, Volunteer>()
+//    .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FullName.Split(' ')[0]))
+//    .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.FullName.Contains(' ') ? src.FullName.Substring(src.FullName.IndexOf(' ') + 1) : string.Empty));

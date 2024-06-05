@@ -12,5 +12,6 @@ public interface IRepo<T>
     public T Add(T something);
     public T Update(T something, int somethimg);
     public T Delete(int code);
+    public T Get(int id);
 
 }

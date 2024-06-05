@@ -38,30 +38,36 @@ public class VolunteersController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<Volunteer> Post(Volunteer volunteer)
+    public ActionResult<Volunteer> Post([FromBody]Volunteer volunteer)
     {
-        if (volunteer == null)
-        {
-            return BadRequest();
-        }
-        if (DoesVolunteerExist(volunteer.VolunteerId))
-        {
-            return Conflict("Volunteer with this ID already exists.");
-        }
+        //if (volunteer == null)
+        //{
+        //    return BadRequest();
+        //}
+        //if (DoesVolunteerExist(volunteer.VolunteerId))
+        //{
+        //    return Conflict("Volunteer with this ID already exists.");
+        //}
+        //try
+        //{
+        //    return volunteerRepoBl.Add(volunteer);
+        //}
+        //catch (Exception ex)
+        //{
+        //    return Conflict(ex.Message);
+        //}
         try
         {
-            return volunteerRepoBl.Add(volunteer);
+            var addedVolunteer = /*volunteerService.AddIfNotExists(volunteer);*/volunteerRepoBl.Add(volunteer); 
+            return Ok(addedVolunteer);
         }
         catch (Exception ex)
         {
-            return Conflict(ex.Message);
+            return BadRequest(new { message = ex.Message });
         }
 
     }
-    private bool DoesVolunteerExist(int volunteerId)
-    {
-        return volunteerRepoBl.GetAll().Any(v => v.VolunteerId == volunteerId);
-    }
+    
 }
 //[HttpPut("{volunteerId}")]
 //public ActionResult<Volunteer> Update(Volunteer volunteer, int Id)
