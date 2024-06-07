@@ -11,6 +11,8 @@ public partial class EquipmentForSoldiersContext : DbContext
     {
     }
 
+    public virtual DbSet<BaseRequest> BaseRequests { get; set; }
+
     public virtual DbSet<City> Cities { get; set; }
 
     public virtual DbSet<IdfbaseKindOfVolunteering> IdfbaseKindOfVolunteerings { get; set; }
@@ -25,6 +27,29 @@ public partial class EquipmentForSoldiersContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<BaseRequest>(entity =>
+        {
+            entity.HasKey(e => e.RequestId).HasName("PK__BaseRequ__33A8517A29A5BE42");
+
+            entity.Property(e => e.IdfbaseId).HasColumnName("IDFBaseId");
+            entity.Property(e => e.RequestDate)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.Status)
+                .HasMaxLength(50)
+                .HasDefaultValueSql("('Active')");
+
+            entity.HasOne(d => d.Idfbase).WithMany(p => p.BaseRequests)
+                .HasForeignKey(d => d.IdfbaseId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_VolunteerRequests_IDFBases");
+
+            entity.HasOne(d => d.KindOfVolunteering).WithMany(p => p.BaseRequests)
+                .HasForeignKey(d => d.KindOfVolunteeringId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_VolunteerRequests_KindOfVolunteering");
+        });
+
         modelBuilder.Entity<City>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__City__3214EC07D68A25C8");
@@ -54,8 +79,14 @@ public partial class EquipmentForSoldiersContext : DbContext
 
             entity.ToTable("IDFBases");
 
+            entity.Property(e => e.Email)
+                .HasMaxLength(100)
+                .IsUnicode(false);
             entity.Property(e => e.Name)
                 .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.Phone)
+                .HasMaxLength(20)
                 .IsUnicode(false);
 
             entity.HasOne(d => d.City).WithMany(p => p.Idfbases)

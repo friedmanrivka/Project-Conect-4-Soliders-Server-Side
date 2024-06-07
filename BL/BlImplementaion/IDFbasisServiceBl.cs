@@ -1,51 +1,65 @@
-﻿using AutoMapper;
+﻿//using AutoMapper;
+//using BL.BlApi;
+//using BL.Bo;
+//using DAL;
+//using DAL.DalApi;
+
+//using DAL.IDFBaseRepo;
+//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
+using AutoMapper;
 using BL.BlApi;
 using BL.Bo;
-using DAL;
-using DAL.DalApi;
-using DAL.Dalimplementaion;
-using DAL.VolunteerRepo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAL;
+using DAL.DalApi;
+using System.Reflection;
 
 namespace BL.BlImplementaion;
 
-public class IDFbasisServiceBl : IIDFbasisRepoBl
+public class IDFbasisServiceBl : IIDFBaseRepoBl
 {
-    IIDFbasisRepo IDFbasisRepo;
+    IIDFBaseRepo IDFBaseRepo;
     ICityRepo cityRepo;
     IMapper map;
-    public IDFbasisServiceBl(DALManager IDFbasisRepo, IMapper map)
+    public IDFbasisServiceBl(DALManager IDFBaseRepo, IMapper map)
     {
-        this.IDFbasisRepo = IDFbasisRepo.IDFbase;
-        this.cityRepo = IDFbasisRepo.city;
+        this.IDFBaseRepo = IDFBaseRepo.IDFBase;
+        this.cityRepo = IDFBaseRepo.city;
         this.map = map;
     }
 
-    Idfbasis IRepoBl<Idfbasis>.Add(Idfbasis something)
+    public Idfbasis Add(Idfbasis something)
     {
         throw new NotImplementedException();
     }
 
-    Idfbasis IRepoBl<Idfbasis>.Delete(int code)
+    public Idfbasis Delete(int code)
     {
         throw new NotImplementedException();
     }
 
-    Idfbasis IRepoBl<Idfbasis>.Get(int id)
+    public Idfbasis Get(int id)
     {
         throw new NotImplementedException();
     }
 
-    List<Idfbasis> IRepoBl<Idfbasis>.GetAll()
+    public List<Idfbasis> GetAll()
     {
-        throw new NotImplementedException();
+        List<Idfbasis> listIDFBasesBl = new();
+        var data = IDFBaseRepo.GetAll();
+        data.ForEach(IDFBase => listIDFBasesBl.Add(map.Map<Idfbasis>(IDFBase)));
+        return listIDFBasesBl;
     }
 
-    Idfbasis IRepoBl<Idfbasis>.Update(Idfbasis something, int somethimgCode)
+    public Idfbasis Update(Idfbasis something, int somethimgCode)
     {
         throw new NotImplementedException();
     }

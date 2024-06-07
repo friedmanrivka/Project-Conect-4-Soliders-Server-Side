@@ -29,11 +29,11 @@
 //{
 
 //}
-     
+
 
 //    }
 
-  
+
 //    [HttpGet("{volunteerId}")]
 //public ActionResult<Volunteer> Get(int volunteerId)
 //{
@@ -74,3 +74,32 @@
 //}
 
 //}
+using Microsoft.AspNetCore.Mvc;
+using BL.BlApi;
+using BL.Bo;
+using BL;
+
+namespace Server.Controllers;
+[ApiController]
+[Route("api/[controller]")]
+public class IdfbasisController : ControllerBase
+{
+    IIDFBaseRepoBl IIDFbaseRepoBl;
+
+    public IdfbasisController(BLManager bLManager)
+    {
+        this.IIDFbaseRepoBl = bLManager.IDFbase;
+    }
+    //[HttpGet]
+    //public ActionResult<List<Idfbasis>> Get()
+    //{
+    //    var IDFBases = IIDFbaseRepoBl.GetAll();
+    //    if (IDFBases == null || IDFBases.Count == 0)
+    //        return NotFound();
+    //    return IDFBases;
+
+    //}
+}
+        //if (volunteerRepoBl.GetAll() == null)
+        //    return NotFound();
+        //return volunteerRepoBl.GetAll();
