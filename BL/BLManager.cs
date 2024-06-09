@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BL.AutoMapper;
 using BL.BlApi;
 using BL.BlImplementaion;
 using DAL;
@@ -29,6 +30,16 @@ public class BLManager
 
         services.AddScoped<BL.BlApi.ICityRepoBl, BL.BlImplementaion.CityServiceBl>();
 
+        // Inject ICityRepoBl into AutoMapperProfile
+        services.AddSingleton(provider =>
+        {
+            var cityRepoBl = provider.GetRequiredService<ICityRepoBl>();
+            var configuration = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new AutoMapperProfile(cityRepoBl));
+            });
+            return configuration.CreateMapper();
+        });
 
         ServiceProvider servicesProvider = services.BuildServiceProvider();
 

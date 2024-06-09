@@ -5,13 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using BL.BlImplementaion;
+using BL.BlApi;
 namespace BL.AutoMapper
 {
     public class AutoMapperProfile:Profile
     {
-        public AutoMapperProfile()
+        private readonly ICityRepoBl _cityRepoBl;
+        public AutoMapperProfile(ICityRepoBl cityRepoBl)
         {
-            CreateMap<DAL.Do.City,BL.Bo.City>();
+            CreateMap<DAL.Do.City,BL.Bo.City>(); //??
+            CreateMap<BL.Bo.City, DAL.Do.City>(); //??
             CreateMap<DAL.Do.Volunteer, Volunteer>()
            .ForMember(dest => dest.FullName, source => source.MapFrom(src => src.FirstName + " " + src.LastName))
            .ForMember(dest => dest.CityName, opt => opt.MapFrom(src => src.City != null ? src.City.Name : null))
@@ -26,9 +30,11 @@ namespace BL.AutoMapper
                            opt => opt.MapFrom(src => DateTime.Today.AddYears(-src.Age)))
                 .ForMember(dest => dest.City,
                            opt => opt.Ignore()) // לא למפות את ה-City ישירות
-                .ForMember(dest => dest.CityId,
-                           opt => opt.MapFrom(src => src.CityId));
 
+                .ForMember(dest => dest.CityId,
+                           opt => opt.MapFrom(src => GetCityIdByName(src.CityName)));
+            
+            
         }
         private int CalculateAge(DateTime? dateOfBirth)
         {
@@ -53,74 +59,13 @@ namespace BL.AutoMapper
             var names = fullName.Split(' ');
             return names.Length > 1 ? names[1] : string.Empty;
         }
-        //CreateMap<BL.Bo.Volunteer, Volunteer>()
 
-        //    .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.FullName.Contains(' ') ? src.FullName.Substring(src.FullName.IndexOf(' ') + 1) : string.Empty));
+        private int? GetCityIdByName(string cityName)
+        {
+            var city = _cityRepoBl.GetAll().FirstOrDefault(c => c.Name == cityName);
+            return city?.Id;
+        }
 
-        //    CreateMap<Volunteer, DAL.Do.Volunteer>()
-        //    .ForMember(dest => dest.Email, opt => opt.MapFrom(src => GetComposerName(src)))
-        //    .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => GetDescription(src)))
-        //    .ForMember(dest => dest.DateOfBirth, opt => opt.MapFrom(src => GetProcessorName(src)))
-        //    .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => GetSongWriter(src)))
-        //    .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => LastName(src)))
-        //    .ForMember(dest => dest.AddressId, opt => opt.MapFrom(src => AddressId(src)));
-        //    //.ForMember(dest => dest., opt => opt.MapFrom(src => GetSongWriter(src)))
-        //    //.ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => GetSongWriter(src)))
-
-
-
-        //}
-        //private string GetComposerName(Volunteer volunteer)
-        //{
-        //    return "Unknown";
-        //}
-        //private string GetDescription(Volunteer volunteer)
-        //{
-        //    return "Unknown Song";
-        //}
-        //private string GetProcessorName(Volunteer volunteer)
-        //{
-        //    return "Unknown";
-        //}
-        //private string GetSongWriter(Volunteer volunteer)
-        //{
-        //    return "Unknown";
-        //}
-        //private string AddressId(Volunteer volunteer)
-        //{
-        //    return "Unknown";
-        //}
-        //private string LastName(Volunteer volunteer)
-        //{
-        //    return "Unknown";
-        //}
-
-
-        //    CreateMap<Volunteer, DAL.Do.Volunteer>()
-        //        .ForMember(dest => dest.FirstName, source => source.MapFrom(src => src.FullName.Split(' ')[0]))
-        //        .ForMember(dest => dest.LastName, source => source.MapFrom(src => src.FullName.Split(' ')[1]))
-        //        .ForMember(dest => dest.DateOfBirth, source => source.Ignore()); // assuming date of birth is not provided in BL model
-        //}
-
-
-        //.ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => GetFirstName(src)))
-        //.ForMember(dest=>dest.LastName,opt=>opt.MapFrom(src=))
-
-        //CreateMap<Dal.Do.Singer, Singer>()
-        //        .ForMember(dest => dest.FullName, source => source.MapFrom(src => src.FirstName + " " + src.LastName))
-        //        .ForMember(dest => dest.Age, source => source.MapFrom(src => src.Age* 10));
-        //private string GetFullName(Volunteer volunteer)
-        //{
-        //    return "unknown";
-        //}
     }
 }
 
-
-//CreateMap<Volunteer, DAL.Do.Volunteer>()
-//    .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FullName.Split(' ')[0]))
-//.ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.FullName.Contains(' ') ? src.FullName.Substring(src.FullName.IndexOf(' ') + 1) : string.Empty));
-
-//CreateMap<DAL.Do.Volunteer, Volunteer>()
-//    .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FullName.Split(' ')[0]))
-//    .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.FullName.Contains(' ') ? src.FullName.Substring(src.FullName.IndexOf(' ') + 1) : string.Empty));
