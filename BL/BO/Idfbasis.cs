@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BL.Bo;
 
-internal class Idfbasis
+public partial class Idfbasis
 {
     public int Id { get; set; }
 

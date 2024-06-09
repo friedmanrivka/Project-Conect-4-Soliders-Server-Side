@@ -40,7 +40,9 @@ public class VolunteerServiceBl : IVolunteerRepoBl
 
     }
     public Volunteer Add(Volunteer volunteer)
+
     {
+        int? cityId = cityRepo.GetCityIdByName(volunteer.CityName);
         var existingVolunteer = volunteerRepo.GetAll()
                                              .FirstOrDefault(v => v.Email == volunteer.Email);
 

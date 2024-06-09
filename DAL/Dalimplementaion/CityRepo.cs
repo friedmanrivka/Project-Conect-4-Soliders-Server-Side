@@ -41,4 +41,9 @@ internal class CityRepo:ICityRepo
     {
         throw new NotImplementedException();
     }
+    public int? GetCityIdByName(string cityName) 
+    {
+        var city = Equipment4SoldiersContext.Cities.FirstOrDefault(c => c.Name == cityName);
+        return city?.Id;
+    }
 }

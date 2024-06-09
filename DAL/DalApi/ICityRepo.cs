@@ -9,4 +9,5 @@ namespace DAL.DalApi;
 
 public interface ICityRepo:IRepo<City>
 {
+    int? GetCityIdByName(string cityName);
 }

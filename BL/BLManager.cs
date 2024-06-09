@@ -4,7 +4,7 @@ using BL.BlApi;
 using BL.BlImplementaion;
 using DAL;
 using DAL.DalApi;
-using DAL.Dalimplementaion;
+
 using DAL.Do;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,7 +20,7 @@ public class BLManager
 
     public ICityRepoBl city { get; set; }
     public IVolunteerRepoBl volunteer { get; set; }
-
+    public IIDFBaseRepoBl IDFbase { get; set; }
     public BLManager(string constStr)
     {
         ServiceCollection services = new ServiceCollection();
@@ -41,25 +41,13 @@ public class BLManager
             return configuration.CreateMapper();
         });
 
+        services.AddScoped<BL.BlApi.IIDFBaseRepoBl,BL.BlImplementaion.IDFbasisServiceBl>();
+       
         ServiceProvider servicesProvider = services.BuildServiceProvider();
-
-        //volunteer = servicesProvider.GetRequiredService<VolunteerServiceBl>();
         volunteer = servicesProvider.GetRequiredService<IVolunteerRepoBl>();
 
         city = servicesProvider.GetRequiredService<ICityRepoBl>();
+        IDFbase = servicesProvider.GetRequiredService<IIDFBaseRepoBl>();
 
     }
 }
-//    //  public IVolunteerRepo volunteer { get; }
-//    //    public DALManager()
-//    //    {
-//    //        ServiceCollection collections = new ServiceCollection();
-//    //        collections.AddDbContext<Equipment4SoldiersContext>();
-//    //        collections.AddScoped<IVolunteerRepo, VolunteerRepo>();
-
-//    //        ServiceProvider provider = collections.BuildServiceProvider();
-
-//    //        volunteer = provider.GetRequiredService<VolunteerRepo>();
-//    //    }
-//    //}
-//}
